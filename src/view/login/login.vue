@@ -8,7 +8,7 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <p class="login-tip">请输入用户名和密码</p>
+          <p class="login-tip">请输入用户名和密码xxxxx</p>
         </div>
       </Card>
     </div>
@@ -23,19 +23,21 @@ export default {
   },
   methods: {
     handleSubmit ({ userName, password }) {
-      let data = { userName, password }
-      this.$get(
-        '/server/login.json',
+      // let data = { userName, password }
+      this.$post(
+        '/test/setRedis',
         {
-          account: data.userName,
-          password: data.password
+          // account: data.userName,
+          // password: data.password
         },
         response => {
-          if (response.data.code === '200') {
-            this.$router.push({ name: this.$config.homeName })
-          } else {
-            this.$Message.error('账号或密码')
-          }
+          console.log(response)
+          debugger
+          // if (response.data.code === '200') {
+          //   this.$router.push({ name: this.$config.homeName })
+          // } else {
+          //   this.$Message.error('账号或密码')
+          // }
         }
       )
     }
