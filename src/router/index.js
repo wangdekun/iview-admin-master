@@ -12,7 +12,7 @@ const router = new Router({
   routes,
   mode: 'history'
 })
-const LOGIN_PAGE_NAME = 'login'
+const LOGIN_PAGE_NAME = 'register'
 
 const turnTo = (to, access, next) => {
   if (canTurnTo(to.name, access, routes)) next() // 有权限，可访问
@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
       }).catch(() => {
         setToken('')
         next({
-          name: 'login'
+          name: 'register'
         })
       })
     }

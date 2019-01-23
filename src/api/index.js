@@ -31,12 +31,12 @@ function axiosApi (method, url, params, success, failure) {
   axios({
     method: method,
     url: url,
-    data: method === 'POST' ? Qs.stringify(params, {indices: false}) : null,
+    data: method === 'POST' ? Qs.stringify(params, { indices: false }) : null,
     params: method === 'GET' ? params : null,
     baseURL: '',
     withCredentials: false,
     paramsSerializer: function (params) {
-      return Qs.stringify(params, {indices: false})
+      return Qs.stringify(params, { indices: false })
     }
   })
     .then(function (res) {
@@ -61,13 +61,13 @@ function queryBUffer (method, url, params, success, failure) {
   axios({
     method: method,
     url: url,
-    data: method === 'POST' ? Qs.stringify(params, {indices: false}) : null,
+    data: method === 'POST' ? Qs.stringify(params, { indices: false }) : null,
     params: method === 'GET' ? params : null,
     baseURL: '',
     withCredentials: false,
     responseType: 'arraybuffer',
     paramsSerializer: function (params) {
-      return Qs.stringify(params, {indices: false})
+      return Qs.stringify(params, { indices: false })
     }
   })
     .then(function (res) {
