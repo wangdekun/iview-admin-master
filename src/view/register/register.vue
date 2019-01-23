@@ -49,7 +49,7 @@
   <Row>
     <Input v-model="user_wechat" placeholder="请输入用户wechat" style="width: 300px" />
   </Row>
-  <Button type="primary" @on-success-valid="handleSubmit">Submit</Button>
+  <Button type="primary" @click="handleSubmit">Submit</Button>
 
 </div>
 </template>
@@ -89,9 +89,8 @@ export default {
   methods: {
     handleSubmit () {
       // let data = { user_password, user_real_name }
-      // console.log(user_password)
-      // console.log(this.user_real_name)
-      // console.log('000000000')
+      console.log(this.user_real_name)
+      console.log('000000000')
       this.$post(
         '/webshop/register',
         {
