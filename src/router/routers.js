@@ -39,7 +39,7 @@ export default [
   {
     path: '/',
     name: '_home',
-    redirect: '/home',
+    redirect: '/login',
     component: Main,
     meta: {
       hideInMenu: true,
