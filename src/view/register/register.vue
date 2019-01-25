@@ -63,16 +63,6 @@ export default {
 
   data () {
     return {
-      user_name: '',
-      user_sex: '',
-      user_birthday: '',
-      user_password: '',
-      user_real_name: '',
-      user_id_card: '',
-      user_mobile: '',
-      user_email: '',
-      user_qq: '',
-      user_wechat: '',
       sexList: [
         {
           value: 'man',
@@ -83,19 +73,37 @@ export default {
           label: '女'
         }
       ],
-      model1: ''
+      user_name: '',
+      user_sex: '',
+      user_birthday: '',
+      user_password: '',
+      user_real_name: '',
+      user_id_card: '',
+      user_mobile: '',
+      user_email: '',
+      user_qq: '',
+      user_wechat: ''
     }
   },
   methods: {
     handleSubmit () {
       // let data = { user_password, user_real_name }
-      console.log(this.user_real_name)
-      console.log('000000000')
+      console.log(this.user_name)
+      console.log(this.user_sex)
+      console.log('000000000' + this.user_birthday)
       this.$post(
         '/webshop/register',
         {
-          // account: data.userName,
-          // password: data.password
+          userName: this.user_name,
+          usersex: this.user_sex,
+          userBirthday: this.user_birthday,
+          userPassword: this.user_password,
+          userRealName: this.user_real_name,
+          userIdcard: this.user_id_card,
+          user_mobile: this.user_mobile,
+          userEmail: this.user_email,
+          userQq: this.user_qq,
+          userWechat: this.user_wechat
         },
         response => {
           console.log(response)

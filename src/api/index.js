@@ -31,7 +31,7 @@ function axiosApi (method, url, params, success, failure) {
   axios({
     method: method,
     url: url,
-    data: method === 'POST' ? Qs.stringify(params, { indices: false }) : null,
+    data: method === 'POST' ? params : null,
     params: method === 'GET' ? params : null,
     baseURL: '',
     withCredentials: false,
@@ -61,7 +61,7 @@ function queryBUffer (method, url, params, success, failure) {
   axios({
     method: method,
     url: url,
-    data: method === 'POST' ? Qs.stringify(params, { indices: false }) : null,
+    data: method === 'POST' ? params : null,
     params: method === 'GET' ? params : null,
     baseURL: '',
     withCredentials: false,
