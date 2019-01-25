@@ -8,7 +8,7 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <p class="login-tip">请输入用户名和密码xxxxx</p>
+          <Button @click="register" type="info" long>注册</Button>
         </div>
       </Card>
     </div>
@@ -17,18 +17,24 @@
 
 <script>
 import LoginForm from '_c/login-form'
+import { setToken } from '@/libs/util'
 export default {
   components: {
     LoginForm
   },
   methods: {
+    register () {
+      this.$router.push({
+        name: 'register'
+      })
+    },
     handleSubmit ({ userName, password }) {
-      // let data = { userName, password }
+      setToken('super_admin')
       this.$post(
         '/test/setRedis',
         {
-          // account: data.userName,
-          // password: data.password
+          userName: userName,
+          password: password
         },
         response => {
           console.log(response)
