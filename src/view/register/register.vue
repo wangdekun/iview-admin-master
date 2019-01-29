@@ -112,18 +112,34 @@ export default {
       })
     },
     handleSubmit () {
-      console.log(this.registerForm.user_name)
-      console.log(this.registerForm.user_sex)
-      console.log('000000000' + this.registerForm.user_birthday)
-      this.$post('/webshop/register', this.registerForm, response => {
-        console.log(response)
-        debugger
-        // if (response.data.code === '200') {
-        //   this.$router.push({ name: this.$config.homeName })
-        // } else {
-        //   this.$Message.error('账号或密码')
-        // }
-      })
+      // let data = { user_password, user_real_name }
+      console.log(this.user_name)
+      console.log(this.user_sex)
+      console.log('000000000' + this.user_birthday)
+      this.$post(
+        '/webshop/register.json',
+        {
+          userName: this.user_name,
+          usersex: this.user_sex,
+          userBirthday: this.user_birthday,
+          userPassword: this.user_password,
+          userRealName: this.user_real_name,
+          userIdcard: this.user_id_card,
+          user_mobile: this.user_mobile,
+          userEmail: this.user_email,
+          userQq: this.user_qq,
+          userWechat: this.user_wechat
+        },
+        response => {
+          console.log(response)
+          debugger
+          // if (response.data.code === '200') {
+          //   this.$router.push({ name: this.$config.homeName })
+          // } else {
+          //   this.$Message.error('账号或密码')
+          // }
+        }
+      )
     }
   }
 }

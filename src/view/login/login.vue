@@ -31,7 +31,7 @@ export default {
     handleSubmit ({ userName, password }) {
       setToken('super_admin')
       this.$post(
-        '/test/setRedis',
+        '/webshop/login.json',
         {
           userName: userName,
           password: password
