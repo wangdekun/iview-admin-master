@@ -17,7 +17,7 @@
 
 <script>
 import LoginForm from '_c/login-form'
-import { setToken } from '@/libs/util'
+// import { setToken } from '@/libs/util'
 export default {
   components: {
     LoginForm
@@ -29,7 +29,7 @@ export default {
       })
     },
     handleSubmit ({ userName, password }) {
-      setToken('super_admin')
+      // setToken('super_admin')
       this.$post(
         '/webshop/login.json',
         {
@@ -37,8 +37,9 @@ export default {
           password: password
         },
         response => {
-          console.log(response)
-          debugger
+          this.$router.push({
+            name: 'indexpage'
+          })
           // if (response.data.code === '200') {
           //   this.$router.push({ name: this.$config.homeName })
           // } else {

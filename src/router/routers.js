@@ -37,6 +37,15 @@ export default [
     component: () => import('@/view/register/register.vue')
   },
   {
+    path: '/indexpage',
+    name: 'indexpage',
+    meta: {
+      title: 'indexpage - 首页',
+      hideInMenu: true
+    },
+    component: () => import('@/view/index/indexpage.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/login',
