@@ -26,11 +26,10 @@
                 <Icon type="ios-trash-outline" @click.native="handleRemove"></Icon>
             </div>
         </template>
-              <Upload v-else
+              <Upload
                 ref="upload"
                 :show-upload-list="false"
-                :default-file-list="defaultList"
-                :on-success="handleSuccess(response)"
+                :on-success="handleSuccess"
                 :format="['jpg','jpeg','png']"
                 :max-size="2048"
                 type="drag"
@@ -153,7 +152,7 @@ export default {
     handleRemove () {
       this.registerForm.user_img = ''
     },
-    handleSuccess (response) {
+    handleSuccess (response, file, fileList) {
       this.registerForm.user_img = response.data.url
     },
     handleSubmit () {
