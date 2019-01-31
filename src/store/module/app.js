@@ -28,6 +28,7 @@ const closePage = (state, route) => {
 
 export default {
   state: {
+    uploadUrl: '/upload/Shangchuan',
     breadCrumbList: [],
     tagNavList: [],
     homeRoute: {},
