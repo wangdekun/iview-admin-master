@@ -46,6 +46,15 @@ export default [
     component: () => import('@/view/index/indexpage.vue')
   },
   {
+    path: '/indexmenu',
+    name: 'indexmenu',
+    meta: {
+      title: 'indexmenu - 首页',
+      hideInMenu: true
+    },
+    component: () => import('@/view/indexmenu/indexmenu.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/login',
