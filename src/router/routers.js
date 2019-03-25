@@ -55,6 +55,15 @@ export default [
     component: () => import('@/view/indexmenu/indexmenu.vue')
   },
   {
+    path: '/indexmenu2',
+    name: 'indexmenu2',
+    meta: {
+      title: 'indexmenu2',
+      hideInMenu: true
+    },
+    component: () => import('@/view/indexmenu/indexmenu2.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/login',
