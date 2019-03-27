@@ -17,7 +17,7 @@
 
 <script>
 import LoginForm from '_c/login-form'
-// import { setToken } from '@/libs/util'
+import { setToken } from '@/libs/util'
 export default {
   components: {
     LoginForm
