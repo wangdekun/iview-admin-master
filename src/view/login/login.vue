@@ -29,7 +29,7 @@ export default {
       })
     },
     handleSubmit ({ userName, password }) {
-      // setToken('super_admin')
+      setToken('super_admin')
       this.$post(
         '/webshop/login.json',
         {
@@ -38,7 +38,7 @@ export default {
         },
         response => {
           this.$router.push({
-            name: 'indexpage'
+            name: 'indexmenu2'
           })
           // if (response.data.code === '200') {
           //   this.$router.push({ name: this.$config.homeName })
