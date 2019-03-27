@@ -38,13 +38,13 @@
             <template slot="title">
               <Icon :type="item.iconType"></Icon>{{item.title}}
             </template>
-            <div v-for="(item2,index2) in item.items" :key="index2">
-              <MenuItem v-if="item2.items == null" :name="item2.name" >{{item2.title}}</MenuItem>
-              <Submenu v-else >
+            <div v-for="(item2,index2) in item.treeFilters" :key="index2">
+              <MenuItem v-if="item2.treeFilters == null || item2.treeFilters.length == 0" :name="item2.name" >{{item2.title}}</MenuItem>
+              <Submenu v-else :name="item2.name">
                 <template slot="title">
                   {{item2.title}}
                 </template>
-                <MenuItem v-for="(item3,index3) in item2.items" :name="item3.name" :key="index3">{{item3.title}}</MenuItem>
+                <MenuItem v-for="(item3,index3) in item2.treeFilters" :name="item3.name" :key="index3">{{item3.title}}</MenuItem>
               </Submenu>
             </div>
           </Submenu>
@@ -65,6 +65,9 @@
 </template>
 <script>
 export default {
+  created () {
+    this.getMeun()
+  },
   data () {
     return {
       menuData: {
@@ -82,14 +85,14 @@ export default {
             // 图标样式
             iconType: 'ios-navigate',
             // 二级菜单数组
-            items: [
+            treeFilters: [
               { name: '1-1', title: '二级菜单_1' },
               { name: '1-2', title: '二级菜单_2' },
               { name: '1-3', title: '二级菜单_3' },
               {
                 name: '1-4',
                 title: '二级菜单_4',
-                items: [
+                treeFilters: [
                   { name: '1-4-1', title: '三级菜单_1' },
                   { name: '1-4-2', title: '三级菜单_2' },
                   { name: '1-4-3', title: '三级菜单_3' }
@@ -101,7 +104,7 @@ export default {
             name: '2',
             title: '一级菜单_2',
             iconType: 'ios-keypad',
-            items: [
+            treeFilters: [
               { name: '2-1', title: '二级菜单_1' },
               { name: '2-2', title: '二级菜单_2' },
               { name: '2-3', title: '二级菜单_3' }
@@ -111,6 +114,16 @@ export default {
         ]
 
       }
+    }
+  },
+  methods: {
+    getMeun () {
+      var url = '/tree/findtree.json'
+      var data = {}
+      this.$post(url, data, response => {
+        console.log(response.data)
+        this.menuData.submenus = response.data
+      })
     }
   }
 }
