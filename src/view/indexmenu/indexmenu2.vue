@@ -33,8 +33,8 @@
   <div class="layout">
     <Layout :style="{minHeight: '100vh'}">
       <Sider :collapsed-width="78">
-        <Menu theme="dark" width="auto" :open-names="menuData.openNames" :active-name="menuData.activeName" @on-select="handleSubmit(menuData.activeName)">
-          <div v-for="(item,index) in menuData.submenus" :name="item.name" :key="index">
+        <Menu theme="dark" width="auto" :open-names="menuData.openNames" :active-name="menuData.activeName" @on-select="handleSubmit">
+          <div v-for="(item,index) in menuData.submenus"  :key="index">
             <MenuItem v-if="item.isroot == 'Y' " :name="item.name" >{{item.title}}</MenuItem>
             <Submenu v-else :name="item.name">
               <template slot="title" >
@@ -79,6 +79,8 @@
           </Breadcrumb>
           <Card>
             <div style="height: auto;min-height:830px ">Content</div>
+
+            <test/>
           </Card>
         </Content>
       </Layout>
@@ -99,48 +101,48 @@ export default {
         openNames: ['1'],
         // 一级菜单数组
         submenus: [
-          {
-            // 相当于id
-            name: '1',
-            // 显示出来的标题
-            title: '一级菜单_1',
-            isroot: '',
-            // 图标样式
-            iconType: 'ios-navigate',
-            // 二级菜单数组
-            treeFilters: [
-              { name: '1-1',
-                title: '二级菜单_1',
-                isroot: '',
-                treeFilters: [
-                  { name: '1-1', title: '二级菜单_1', isroot: '' }
-                ]
-              },
-              { name: '1-2', title: '二级菜单_2', isroot: '' },
-              { name: '1-3', title: '二级菜单_3', isroot: '' },
-              {
-                name: '1-4',
-                title: '二级菜单_4',
-                isroot: '',
-                treeFilters: [
-                  { name: '1-4-1', title: '三级菜单_1', isroot: '' },
-                  { name: '1-4-2', title: '三级菜单_2', isroot: '' },
-                  { name: '1-4-3', title: '三级菜单_3', isroot: '' }
-                ]
-              }
-            ]
-          },
-          {
-            name: '2',
-            title: '一级菜单_2',
-            isroot: '',
-            iconType: 'ios-keypad',
-            treeFilters: [
-              { name: '2-1', title: '二级菜单_1', isroot: '' },
-              { name: '2-2', title: '二级菜单_2', isroot: '' },
-              { name: '2-3', title: '二级菜单_3', isroot: '' }
-            ]
-          }
+          // {
+          //   // 相当于id
+          //   name: '1',
+          //   // 显示出来的标题
+          //   title: '一级菜单_1',
+          //   isroot: '',
+          //   // 图标样式
+          //   iconType: 'ios-navigate',
+          //   // 二级菜单数组
+          //   treeFilters: [
+          //     { name: '1-1',
+          //       title: '二级菜单_1',
+          //       isroot: '',
+          //       treeFilters: [
+          //         { name: '1-1', title: '二级菜单_1', isroot: '' }
+          //       ]
+          //     },
+          //     { name: '1-2', title: '二级菜单_2', isroot: '' },
+          //     { name: '1-3', title: '二级菜单_3', isroot: '' },
+          //     {
+          //       name: '1-4',
+          //       title: '二级菜单_4',
+          //       isroot: '',
+          //       treeFilters: [
+          //         { name: '1-4-1', title: '三级菜单_1', isroot: '' },
+          //         { name: '1-4-2', title: '三级菜单_2', isroot: '' },
+          //         { name: '1-4-3', title: '三级菜单_3', isroot: '' }
+          //       ]
+          //     }
+          //   ]
+          // },
+          // {
+          //   name: '2',
+          //   title: '一级菜单_2',
+          //   isroot: '',
+          //   iconType: 'ios-keypad',
+          //   treeFilters: [
+          //     { name: '2-1', title: '二级菜单_1', isroot: '' },
+          //     { name: '2-2', title: '二级菜单_2', isroot: '' },
+          //     { name: '2-3', title: '二级菜单_3', isroot: '' }
+          //   ]
+          // }
 
         ]
 
@@ -156,8 +158,8 @@ export default {
         this.menuData.submenus = response.data
       })
     },
-    handleSubmit (k) {
-      console.log('0' + k)
+    handleSubmit: function (name) {
+      console.log(name)
     }
   }
 }

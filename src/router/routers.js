@@ -64,6 +64,15 @@ export default [
     component: () => import('@/view/indexmenu/indexmenu2.vue')
   },
   {
+    path: '/test',
+    name: 'test',
+    meta: {
+      title: 'test - ceshi',
+      hideInMenu: true
+    },
+    component: () => import('@/view/test/test.vue')
+  },
+  {
     path: '/',
     name: '_home',
     redirect: '/login',
