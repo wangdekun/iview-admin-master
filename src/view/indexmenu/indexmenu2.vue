@@ -79,8 +79,6 @@
           </Breadcrumb>
           <Card>
             <div style="height: auto;min-height:830px ">Content</div>
-
-            <test/>
           </Card>
         </Content>
       </Layout>
