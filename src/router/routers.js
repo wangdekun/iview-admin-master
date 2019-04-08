@@ -63,24 +63,7 @@ export default [
     },
     component: () => import('@/view/indexmenu/indexmenu2.vue')
   },
-  {
-    path: '/test',
-    name: 'test',
-    meta: {
-      title: 'test - ceshi',
-      hideInMenu: true
-    },
-    component: () => import('@/view/test/test.vue')
-  },
-  {
-    path: '/test2',
-    name: 'test2',
-    meta: {
-      title: 'test2 - ceshi2',
-      hideInMenu: true
-    },
-    component: () => import('@/view/test2/test2.vue')
-  },
+
   {
     path: '/',
     name: '_home',
@@ -225,6 +208,15 @@ export default [
         component: () => import('@/view/components/editor/editor.vue')
       },
       {
+        path: 'quill_page',
+        name: 'quill_page',
+        meta: {
+          icon: 'ios-create',
+          title: 'quill富文本编辑器'
+        },
+        component: () => import('@/view/components/editor/quill.vue')
+      },
+      {
         path: 'icons_page',
         name: 'icons_page',
         meta: {
@@ -265,6 +257,44 @@ export default [
     ]
   },
   {
+    path: '/documentlibrary',
+    name: '文档库',
+    meta: {
+      icon: 'md-add',
+      title: 'documentlibrary'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'designclassdocumentation',
+        name: '设计类文档',
+        meta: {
+          icon: 'md-add',
+          title: 'designclassdocumentation'
+        },
+        component: () => import('@/view/documentlibrary/designclassdocumentation.vue')
+      },
+      {
+        path: 'requirementclassdocumentation',
+        name: '需求类文档',
+        meta: {
+          icon: 'md-add',
+          title: 'requirementclassdocumentation'
+        },
+        component: () => import('@/view/documentlibrary/requirementclassdocumentation.vue')
+      },
+      {
+        path: 'testclassdocumentation',
+        name: '测试类文档',
+        meta: {
+          icon: 'md-add',
+          title: 'testclassdocumentation'
+        },
+        component: () => import('@/view/documentlibrary/testclassdocumentation.vue')
+      }
+    ]
+  },
+  {
     path: '/excel',
     name: 'excel',
     meta: {
@@ -282,6 +312,7 @@ export default [
         },
         component: () => import('@/view/excel/upload-excel.vue')
       },
+
       {
         path: 'export-excel',
         name: 'export-excel',
