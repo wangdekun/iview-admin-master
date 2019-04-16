@@ -275,6 +275,15 @@ export default [
         component: () => import('@/view/documentlibrary/designclassdocumentation.vue')
       },
       {
+        path: 'test',
+        name: 'test',
+        meta: {
+          icon: 'md-add',
+          title: 'test'
+        },
+        component: () => import('@/view/test/test.vue')
+      },
+      {
         path: 'requirementclassdocumentation',
         name: '需求类文档',
         meta: {

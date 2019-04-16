@@ -1,105 +1,55 @@
 <template>
-    <Table border :columns="columns7" :data="data6"></Table>
+
+    <Button @click="handleSubmit"  >注册</Button>
 </template>
 <script>
 export default {
   data () {
     return {
-      columns7: [
-        {
-          title: 'Name',
-          key: 'name',
-          render: (h, params) => {
-            return h('div', [
-              h('Icon', {
-                props: {
-                  type: 'person'
-                }
-              }),
-              h('strong', params.row.name)
-            ])
-          }
-        },
-        {
-          title: 'Age',
-          key: 'age'
-        },
-        {
-          title: 'Address',
-          key: 'address'
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          width: 150,
-          align: 'center',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'primary',
-                  size: 'small'
-                },
-                style: {
-                  marginRight: '5px'
-                },
-                on: {
-                  click: () => {
-                    this.$router.push({
-                      name: 'requirementclassdocumentation'
-                    })
-                  }
-                }
-              }, 'View'),
-              h('Button', {
-                props: {
-                  type: 'error',
-                  size: 'small'
-                },
-                on: {
-                  click: () => {
-                    this.remove(params.index)
-                  }
-                }
-              }, 'Delete')
-            ])
-          }
-        }
-      ],
-      data6: [
-        {
-          name: 'John Brown',
-          age: 18,
-          address: 'New York No. 1 Lake Park'
-        },
-        {
-          name: 'Jim Green',
-          age: 24,
-          address: 'London No. 1 Lake Park'
-        },
-        {
-          name: 'Joe Black',
-          age: 30,
-          address: 'Sydney No. 1 Lake Park'
-        },
-        {
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park'
-        }
-      ]
+
     }
   },
   methods: {
-    show (index) {
-      this.$Modal.info({
-        title: 'User Info',
-        content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index].address}`
-      })
-    },
-    remove (index) {
-      this.data6.splice(index, 1)
+    handleSubmit () {
+      // let data = { user_password, user_real_name }
+      console.log(this.user_name)
+      console.log(this.user_sex)
+      console.log('000000000' + this.user_birthday)
+      var map = {}
+      var requirementEditEmptyList = []
+      var userList = []
+      for (var i = 0; i < 3; i++) {
+        var RequirementEditEmpty = {}
+        var User = {}
+        RequirementEditEmpty.id = 1
+        RequirementEditEmpty.content = '测试'
+        requirementEditEmptyList.push(RequirementEditEmpty)
+        User.userId = 1
+        User.userName = '测试'
+        userList.push(User)
+      }
+      map['userList'] = userList
+      map['requirementEditEmptyList'] = requirementEditEmptyList
+      // map={"userList":userList,"requirementEditEmptyList":requirementEditEmptyList}
+      console.log(map, '******************', userList)
+      // map.push("requirementEditEmptyList",requirementEditEmptyList)
+      // map.push("userList",userList)
+      this.$post(
+        '/documentLibrary/setrequirement.json',
+        map,
+        { headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        } },
+        response => {
+          // if (response.data.code === '200') {
+          //   this.$router.push({ name: this.$config.homeName })
+          // } else {
+          //   this.$Message.error('账号或密码')
+          // }
+        }
+      )
     }
+
   }
 }
 </script>
