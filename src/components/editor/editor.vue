@@ -51,7 +51,22 @@ export default {
     }
   },
   mounted () {
+    let vm = this
     this.editor = new Editor(`#${this.editorId}`)
+    this.editor.customConfig.zIndex = 1
+    this.editor.customConfig.uploadImgServer = '/upload/shangchuan'
+    this.editor.customConfig.uploadImgHooks = {
+      success: function (xhr, editor, result) {
+        // vm.$Message.success('上传成功');
+      },
+      fail: function (xhr, editor, result) {
+        vm.$Message.error('上传图片失败')
+      },
+      customInsert: function (insertImg, result, editor) {
+        let url = result.data[0].url
+        insertImg(url)
+      }
+    }
     this.editor.customConfig.onchange = (html) => {
       let text = this.editor.txt.text()
       if (this.cache) localStorage.editorCache = html
