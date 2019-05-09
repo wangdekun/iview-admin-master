@@ -54,7 +54,9 @@ export default {
     let vm = this
     this.editor = new Editor(`#${this.editorId}`)
     this.editor.customConfig.zIndex = 1
-    this.editor.customConfig.uploadImgServer = '/upload/shangchuan'
+    this.editor.customConfig.uploadImgServer = '/oss/ossshangchuan.json'
+    // myFileName和后台有关
+    this.editor.customConfig.uploadFileName = 'myFileName'
     this.editor.customConfig.uploadImgHooks = {
       success: function (xhr, editor, result) {
         // vm.$Message.success('上传成功');
@@ -63,7 +65,7 @@ export default {
         vm.$Message.error('上传图片失败')
       },
       customInsert: function (insertImg, result, editor) {
-        let url = result.data[0].url
+        let url = result.url
         insertImg(url)
       }
     }

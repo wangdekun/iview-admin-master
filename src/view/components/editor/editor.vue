@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      content: '12312323'
+      content: ''
     }
   },
   methods: {
